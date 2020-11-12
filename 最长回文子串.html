@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {string}
+       * 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+       * 输入: "babad"
+         输出: "bab"
+         注意: "aba" 也是一个有效答案。
+       */
+      var longestPalindrome = function (s) {
+        let left = 0
+        let right = s.length - 1
+        let data = []
+        let indexData = []
+        const reserveStr = s.split('').reverse().join('')
+        while (left < right) {
+          console.log(left, right)
+          while (right > left) {
+            if (s[left] === s[right]) {
+              const res = s.substring(left, right + 1)
+              if (res === res.split('').reverse().join('')) {
+                console.log(left, right)
+                data.push(res)
+                indexData.push(res.length)
+              }
+            }
+            right--
+          }
+          left++
+          right = s.length
+        }
+        if (data.length > 0) {
+          const index = indexData.indexOf(Math.max(...indexData))
+          return data[index]
+        } else {
+          if (s.length >= 2) return s[0]
+          else return s
+        }
+      }
+      const a = new Date().getTime()
+      console.log(longestPalindrome(''))
+      console.log(new Date().getTime() - a)
+    </script>
+  </body>
+</html>

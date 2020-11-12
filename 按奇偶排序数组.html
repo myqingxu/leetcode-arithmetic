@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /** No.922
+       * @param {number[]} A
+       * @return {number[]}
+       */
+      var sortArrayByParityII = function (A) {
+        const evenNumberArr = A.filter((item) => {
+          return item % 2 === 0
+        })
+        const otherArr = A.filter((item) => {
+          return item % 2 !== 0
+        })
+        const newArr = []
+
+        for (let i = 0; i < A.length; i++) {
+          if (i % 2 === 0)
+            newArr.push(evenNumberArr[evenNumberArr.length - 1]) &&
+              evenNumberArr.pop()
+          else newArr.push(otherArr[otherArr.length - 1]) && otherArr.pop()
+        }
+
+        return newArr
+      }
+
+      const re = sortArrayByParityII([1, 2])
+      console.log(re);
+    </script>
+  </body>
+</html>

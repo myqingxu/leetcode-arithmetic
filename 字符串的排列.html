@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /**
+       * @param {string} s1
+       * @param {string} s2
+       * @return {boolean}
+        输入: s1 = "ab" s2 = "eidbaooo"
+        输出: True
+        解释: s2 包含 s1 的排列之一 ("ba").
+       */
+      var checkInclusion = function (s1, s2) {
+        let left = 0;
+        let right = s1.length
+        const reverseStr = s1.split("").sort().join('');// 排序字符串
+        console.log(reverseStr);
+        while(right <= s2.length) {
+          const str = s2.substring(left, right)
+          console.log(str)
+          if (str.split("").sort().join('') === reverseStr) {
+            return true
+          }
+          left ++
+          right ++
+        }
+        return false
+      };
+
+      console.log(checkInclusion('abc', 'bbbca'))
+    </script>
+  </body>
+</html>

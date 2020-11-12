@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+    * @param {number[]} nums
+    * @return {number}
+    */
+    // var removeDuplicates = function(nums) {
+    //   for(let i = nums.length - 1; i >= 0; i--){
+    //     for (let j = i - 1; j >= 0; j --) {
+    //       if (nums[i] === nums[j]) {
+    //         nums.splice(j, 1)
+    //         // nums[j] = '1'
+    //       }
+    //     }
+    //   }
+    // };
+    // var removeDuplicates = function(nums) {
+    //   var count = 0;
+    //   var n = nums.length;
+    //   for(let i = 1;i<n;i++){
+    //     if(nums[i] != nums[i-1]){
+    //         nums[i-count] = nums[i]
+    //     }else{
+    //         count++;
+    //     }
+    //   }
+    //   return n - count;
+    // };
+    // const num = [1,1,9,3,7,1,2,5]
+    // console.log(removeDuplicates(num))
+
+
+    /**
+    * @param {number[]} nums
+    * @return {number}
+    */
+
+    var arr = [undefined, 1, undefined, 2, 2, NaN, NaN, null, null, 5, 6, 7, 8, undefined]
+    
+    // function unique(arr) {
+    //   let newArr = []
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (newArr.indexOf(arr[i]) === -1) {
+    //       newArr.push(arr[i])
+    //     }
+    //   }
+    //   return newArr
+    // }
+
+    // function unique(arr) {
+    //   let obj = {}
+    //   let newArr = []
+    //   for (let i = 0; i < arr.length; i++) {
+    //     if (!(arr[i] in obj)) {
+    //       obj[arr[i]] = 1
+    //       newArr.push(arr[i])
+    //     } else {
+    //       obj[arr[i]] += 1
+    //     }
+    //   }
+    //   console.log(obj)
+    //   console.log(newArr)
+    //   return newArr
+    // }
+    
+    function unique(arr) {
+      return [...new Set(arr)]
+    }
+
+    console.log(unique(arr))
+  </script>
+</body>
+
+</html>

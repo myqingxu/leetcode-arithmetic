@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    void function() {
+      /**
+       * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
+       * @param {string} s
+       * @return {boolean}
+       */
+      var isValid = function(s) {
+        if (s.length % 2 !== 0) return false
+        let data = s.split('')
+        let left = []
+        for (let i = 0; i < data.length; i ++) {
+          if (data[i] === '(' || data[i] === '{' || data[i] === '[') {
+            left.push(data[i])
+          } else if (data[i] === ')' || data[i] === '}' || data[i] === ']') {
+            const str = data[i] === ')'
+              ? '('
+              : data[i] === '}'
+                ? '{'
+                : data[i] === ']'
+                  ? '['
+                  : data[i]
+
+            if (left[left.length - 1] !== str) return false
+            else left.pop()
+          }
+        }
+        return Boolean(left.length === 0)
+      };
+
+      console.log(isValid("()[]"))
+    }()
+  </script>
+</body>
+</html>

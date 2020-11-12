@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * @param {number} n
+     * @return {boolean}
+     */
+    var isHappy = function(n) {
+      var arr = []
+      return recu(arr, n)
+    };
+
+    var recu = function(arr, n) {
+      var re = 0
+      n = String(n)
+      for (var i = 0; i < n.length; i ++) {
+        re += Number(n[i]) * Number(n[i])
+      }
+      if (re === 1) {
+        return true
+      } 
+      if (arr.indexOf(re) > -1) {
+        return false
+      } else {
+        arr.push(re)
+      }
+      return recu(arr, re)
+    }
+
+    // var isHappy = function(n){
+	  //   var arr = [];//存储每一次和，如果遇到相同打断递归；
+    //   return recu(arr,n)
+    // }
+    // var recu = function (arr,n){
+    //   var re = 0,//存储和数；
+    //     n = String(n);//转化成字符进行循环；
+    //   for(var i = 0; i < n.length; i++){//循环字符
+    //     re += Number(n[i]) * Number(n[i]);//求平分
+    //   };
+    //   if (re == 1){//为1返回true，说明他是一个快乐数
+    //       return true;
+    //   }
+    //   if(arr.indexOf(re) > -1){//如果arr存在相同数，打断递归
+    //     return false;
+    //   }else{
+    //     arr.push(re);//不存在一直push
+    //   };
+    //   return recu(arr,re);
+    // };
+
+    console.log(isHappy(15))
+  </script>
+</body>
+
+</html>

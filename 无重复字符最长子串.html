@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      void (function () {
+        /**
+      示例 1:
+        输入: "abcabcbb"
+        输出: 3 
+        解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+      * @param {string} s
+      * @return {number}
+      */
+        var lengthOfLongestSubstring = function (s) {
+          let left = 0
+          let right = 0
+          let data = []
+          if (s === '') return 0
+          while (right < s.length) {
+            if (data[left] && data[left].indexOf(s[right]) !== -1) {
+              left++
+              right = left
+            }
+            data[left] = data[left] ? (data[left] += s[right]) : '' + s[right]
+            right++
+          }
+          for (const item in data) {
+            data[item] = data[item].length
+          }
+          return Math.max(...data)
+          // return data
+        }
+        const a = new Date().getTime()
+        console.log(lengthOfLongestSubstring('dvddvdff'))
+        console.log(new Date().getTime() - a)
+      })()
+    </script>
+  </body>
+</html>
